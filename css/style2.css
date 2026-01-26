@@ -131,7 +131,7 @@ nav a:hover::after {
 }
 
 .big-heart-beat {
-    font-size: 5rem;
+    font-size: 6rem;
     animation: pulse 1.4s infinite;
     margin-bottom: 15px;
     display: inline-block;
@@ -669,7 +669,7 @@ audio::-webkit-media-controls-overflow-button {
     color: white;
     /* Fuente monoespaciada tipo "Hacker/Programador" */
     font-family: 'Courier New', Courier, monospace; 
-    text-shadow: 0 0 10px var(--pink); /* Brillo rosa en los números */
+    /*text-shadow: 0 0 10px var(--pink);  Brillo rosa en los números */
     line-height: 1;
     margin-bottom: 5px;
 }
