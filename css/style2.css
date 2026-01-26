@@ -139,6 +139,30 @@ h1 {
 }
 
 /* =========================================
+   EXTRA: CORAZÓN GIGANTE LATIENDO (INICIO)
+   ========================================= */
+.big-heart-beat {
+    font-size: 6rem; /* Tamaño gigante */
+    color: white;    /* Color blanco */
+    display: inline-block; /* Necesario para que la transformación funcione bien */
+    margin-bottom: 10px; /* Un poco de espacio antes del título */
+    /* Sombra para que resplandezca */
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 10px var(--kitty-pink);
+    /* Aplicamos la animación */
+    animation: heartThump 1.2s infinite ease-in-out;
+}
+
+/* Animación de "doble latido" (Pum-pum... pum-pum...) */
+@keyframes heartThump {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.3); } /* Primer latido fuerte */
+    28% { transform: scale(1); }   /* Se contrae */
+    42% { transform: scale(1.15); } /* Segundo latido más suave */
+    70% { transform: scale(1); }   /* Pausa */
+    100% { transform: scale(1); }
+}
+
+/* =========================================
    5. SECCIÓN: GALERÍA
    ========================================= */
 .photo-grid {
