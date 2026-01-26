@@ -1,4 +1,3 @@
-
 /* =========================================
    1. VARIABLES (PALETA REFINADA)
 ========================================= */
@@ -14,7 +13,7 @@
 }
 
 /* =========================================
-   2. BASE GENERAL Y FONDO
+   2. BASE GENERAL
 ========================================= */
 * {
     box-sizing: border-box;
@@ -23,14 +22,7 @@
 body {
     margin: 0;
     font-family: "Poppins", "Segoe UI", sans-serif;
-    background-color: var(--bg-dark);
-    /* Fondo de puntitos sutiles (recuperado) */
-    background-image: radial-gradient(
-        circle,
-        rgba(168, 85, 247, 0.15) 1px, /* Puntos morados muy suaves */
-        transparent 1px
-    );
-    background-size: 30px 30px;
+    background: radial-gradient(circle at top, #1b1b2f, var(--bg-dark));
     color: var(--text-soft);
     overflow-x: hidden;
 }
@@ -134,8 +126,6 @@ nav a:hover::after {
     font-size: 5rem;
     animation: pulse 1.4s infinite;
     margin-bottom: 15px;
-    display: inline-block;
-    text-shadow: 0 0 20px var(--pink);
 }
 
 @keyframes pulse {
@@ -168,7 +158,6 @@ h1 {
     position: relative;
     transform: translateY(0);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border: 1px solid var(--border-soft);
 }
 
 .card img {
@@ -180,13 +169,12 @@ h1 {
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 25px 60px rgba(168, 85, 247, 0.4);
-    border-color: var(--pink);
 }
 
 .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     display: flex;
     align-items: flex-end;
     padding: 20px;
@@ -213,7 +201,6 @@ h1 {
     margin-bottom: 60px;
     background: linear-gradient(90deg, var(--pink), var(--purple));
     -webkit-background-clip: text;
-    background-clip: text;
     color: transparent;
 }
 
@@ -228,12 +215,6 @@ h1 {
     align-items: center;
     gap: 25px;
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
-}
-
-.music-card:hover {
-    transform: scale(1.02);
-    border-color: var(--pink);
 }
 
 .disk-wrapper {
@@ -242,7 +223,6 @@ h1 {
     border-radius: 50%;
     overflow: hidden;
     animation: spin 12s linear infinite;
-    border: 3px solid rgba(255,255,255,0.2);
 }
 
 @keyframes spin {
@@ -263,151 +243,20 @@ h1 {
     font-style: italic;
     color: var(--pink);
     margin-bottom: 15px;
-    border-left: 3px solid var(--red);
-    padding-left: 15px;
 }
 
 /* =========================================
-   8. WIDGET MENSAJES (ESTILIZADO)
-========================================= */
-.secret-widget {
-    position: fixed;
-    right: -300px; /* Oculto a la derecha */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 340px;
-    background: rgba(15, 15, 20, 0.95);
-    border: 1px solid var(--purple);
-    border-right: none;
-    border-radius: 20px 0 0 20px;
-    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    z-index: 1000;
-    display: flex;
-    backdrop-filter: blur(10px);
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-}
-
-.secret-widget.active {
-    right: 0 !important;
-}
-
-.widget-icon {
-    width: 50px;
-    background: linear-gradient(to bottom, var(--purple), var(--pink));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 20px 0 0 20px;
-    animation: heartbeat 2s infinite;
-}
-
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    5% { transform: scale(1.1); }
-    10% { transform: scale(1); }
-    15% { transform: scale(1.1); }
-    50% { transform: scale(1); }
-    100% { transform: scale(1); }
-}
-
-.widget-content {
-    padding: 25px;
-    width: 100%;
-    color: white;
-}
-
-.widget-content h3 {
-    margin-top: 0;
-    color: var(--pink);
-    font-size: 1.2rem;
-}
-
-.widget-content textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.05);
-    color: white;
-    border: 1px solid var(--border-soft);
-    border-radius: 10px;
-    margin-bottom: 15px;
-    padding: 10px;
-    font-family: inherit;
-    resize: vertical;
-    outline: none;
-}
-
-.widget-content textarea:focus {
-    border-color: var(--pink);
-}
-
-.widget-content button {
-    background: linear-gradient(90deg, var(--red), var(--pink));
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    width: 100%;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.widget-content button:hover {
-    box-shadow: 0 0 15px var(--red);
-}
-
-/* =========================================
-   9. ANIMACIÓN CORAZONES (FONDO FLOTANTE)
-========================================= */
-.heart {
-    position: fixed;
-    font-size: 20px;
-    top: -10vh; /* Empiezan fuera de pantalla */
-    transform: translateY(0);
-    animation: float 8s linear infinite;
-    opacity: 0;
-    z-index: -1; /* Detrás de todo */
-    text-shadow: 0 0 5px rgba(255,255,255,0.3);
-}
-
-/* Variedad en los corazones */
-.heart:nth-child(1) { left: 10%; color: var(--pink); animation-duration: 8s; animation-delay: 0s; }
-.heart:nth-child(2) { left: 25%; color: var(--purple); animation-duration: 10s; animation-delay: 2s; font-size: 30px; }
-.heart:nth-child(3) { left: 50%; color: var(--red); animation-duration: 7s; animation-delay: 4s; }
-.heart:nth-child(4) { left: 75%; color: var(--yellow); animation-duration: 11s; animation-delay: 1s; font-size: 15px; }
-.heart:nth-child(5) { left: 90%; color: white; animation-duration: 9s; animation-delay: 3s; }
-
-@keyframes float {
-    0% {
-        transform: translateY(110vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.6;
-    }
-    90% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(-10vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* =========================================
-   10. FOOTER
+   8. FOOTER
 ========================================= */
 footer {
     text-align: center;
     padding: 30px;
     font-size: 0.8rem;
     opacity: 0.7;
-    border-top: 1px solid var(--border-soft);
 }
 
 /* =========================================
-   11. RESPONSIVE
+   9. RESPONSIVE
 ========================================= */
 @media (max-width: 700px) {
     .music-card {
@@ -421,9 +270,5 @@ footer {
 
     .big-heart-beat {
         font-size: 4rem;
-    }
-    
-    .secret-widget {
-        width: 300px; /* Ajuste móvil */
     }
 }
