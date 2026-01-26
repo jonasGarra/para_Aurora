@@ -264,3 +264,202 @@ footer {
   margin-bottom: 10px;
   padding: 10px;
 }
+/* =========================================
+   ESTILOS DE LA PLAYLIST
+   ========================================= */
+
+/* Fondo específico para esta página */
+.playlist-body {
+  background-color: #0d0d0d;
+  background-image:
+    linear-gradient(
+      0deg,
+      transparent 24%,
+      rgba(188, 19, 254, 0.3) 25%,
+      rgba(188, 19, 254, 0.3) 26%,
+      transparent 27%,
+      transparent 74%,
+      rgba(188, 19, 254, 0.3) 75%,
+      rgba(188, 19, 254, 0.3) 76%,
+      transparent 77%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      rgba(188, 19, 254, 0.3) 25%,
+      rgba(188, 19, 254, 0.3) 26%,
+      transparent 27%,
+      transparent 74%,
+      rgba(188, 19, 254, 0.3) 75%,
+      rgba(188, 19, 254, 0.3) 76%,
+      transparent 77%,
+      transparent
+    );
+  background-size: 50px 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+  color: white;
+}
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--monster-purple); /* O el código hexadecimal #bc13fe */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 100;
+  box-shadow: 0 0 10px #bc13fe;
+}
+
+.neon-title {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow:
+    0 0 10px #ff69b4,
+    0 0 20px #ff69b4;
+  margin: 40px 0;
+  text-align: center;
+}
+
+/* --- TARJETA DE MÚSICA --- */
+.music-card {
+  background: rgba(20, 20, 20, 0.8);
+  border: 2px solid #ff69b4;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease;
+}
+
+.music-card:hover {
+  transform: scale(1.02);
+  border-color: #00ffff; /* Efecto neón al pasar ratón */
+}
+
+/* Diseño alternado para la segunda canción (foto a la derecha) */
+.music-card.reverse {
+  flex-direction: row-reverse;
+  border-color: #bc13fe; /* Morado Monster High */
+}
+
+/* --- DISCO DE VINILO / IMAGEN --- */
+.disk-wrapper {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  animation: spin 10s linear infinite; /* Animación de giro */
+  animation-play-state: paused; /* Pausado por defecto */
+}
+
+/* Si quieres que gire siempre, quita la línea de 'animation-play-state: paused' */
+.music-card:hover .disk-wrapper {
+  animation-play-state: running;
+}
+
+.disk-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- DETALLES DE TEXTO --- */
+.song-details {
+  flex-grow: 1;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.music-card.reverse .song-details {
+  text-align: right;
+}
+
+.song-details h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.custom-msg {
+  color: #ff69b4;
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  border-left: 3px solid #bc13fe; /* Una barrita decorativa al lado */
+  padding-left: 10px;
+}
+
+.music-card.reverse .custom-msg {
+  border-left: none;
+  border-right: 3px solid #bc13fe;
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+/* --- REPRODUCTOR DE AUDIO --- */
+.custom-audio {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  outline: none;
+}
+
+/* Truco CSS para colorear el reproductor nativo (Webkit/Chrome) */
+.custom-audio::-webkit-media-controls-panel {
+  background-color: #e0e0e0; /* Gris muy claro */
+}
+.custom-audio::-webkit-media-controls-play-button {
+  background-color: #ff69b4; /* Botón play rosa */
+  border-radius: 50%;
+}
+.custom-audio::-webkit-media-controls-current-time-display,
+.custom-audio::-webkit-media-controls-time-remaining-display {
+  color: #000;
+}
+
+/* RESPONSIVE PARA MÓVIL */
+@media (max-width: 600px) {
+  .music-card,
+  .music-card.reverse {
+    flex-direction: column; /* En móvil, uno debajo de otro */
+    text-align: center;
+  }
+
+  .music-card.reverse .song-details {
+    text-align: center;
+  }
+
+  .disk-wrapper {
+    margin-bottom: 20px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .custom-msg {
+    border: none !important; /* Quitamos bordes laterales en móvil */
+    padding: 0;
+  }
+}
