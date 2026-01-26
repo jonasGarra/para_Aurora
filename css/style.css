@@ -197,3 +197,49 @@ footer {
 .card:hover .overlay {
   transform: translateY(0);
 }
+
+.secret-widget {
+  position: fixed;
+  right: -260px; /* Escondido por defecto */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  background: rgba(26, 26, 26, 0.95);
+  border: 2px solid var(--monster-purple);
+  border-radius: 20px 0 0 20px;
+  transition: right 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 1000;
+  display: flex;
+}
+
+.secret-widget:hover {
+  right: 0; /* Se desliza al pasar el ratón */
+}
+
+.widget-icon {
+  width: 40px;
+  height: 100px;
+  background: var(--monster-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  border-radius: 20px 0 0 20px;
+}
+
+.widget-content {
+  padding: 20px;
+  width: 100%;
+  color: white;
+}
+
+.widget-content textarea {
+  width: 100%;
+  background: #000;
+  color: var(--kitty-pink);
+  border: 1px solid var(--kitty-pink);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
