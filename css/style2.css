@@ -695,3 +695,29 @@ audio::-webkit-media-controls-overflow-button {
         font-size: 0.6rem;
     }
 }
+
+/* 1. Centrar la frase romántica */
+.love-text {
+    text-align: center;       /* Centra las letras dentro del párrafo */
+    display: block;           /* Se asegura de que sea un bloque */
+    width: 100%;              /* Ocupa todo el ancho disponible */
+    margin: 30px auto;        /* Arriba/Abajo: 30px | Izq/Der: AUTO (Centrado) */
+    color: var(--text-soft);  
+    font-style: italic;
+}
+
+/* 2. Centrar el bloque del contador */
+.timer-wrapper {
+    display: block;           /* Comportamiento de bloque para aceptar márgenes */
+    width: fit-content;       /* El ancho se ajusta al contenido (las cajitas) */
+    margin: 40px auto;        /* ¡ESTO ES LO QUE LO CENTRA! (Auto a los lados) */
+    
+    /* El resto de tu diseño se mantiene igual */
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--border-soft);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;       /* Centra el título h3 interno */
+}
