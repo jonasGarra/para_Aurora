@@ -435,3 +435,96 @@ footer {
 .shadow-img{
     width: 20%;
 }
+
+.separator {
+    color: var();      /* Color morado neón */
+    font-weight: bold;
+    font-size: 1.2rem;         /* Un poco más grande que el texto */
+    margin: 0 30px;            /* ¡AQUÍ ESTÁ EL TRUCO! Separa los lados */
+    text-shadow: 0 0 8px var(--purple); /* Brillo neón */
+    cursor: default;           /* El ratón no cambia a manita */
+    pointer-events: none;      /* No se puede hacer clic (Truco PRO) */
+    opacity: 0.8;
+}
+
+/* RESPONSIVE: En móviles quitamos el separador para que no moleste */
+@media (max-width: 700px) {
+    .separator {
+        display: none;
+    }
+    nav ul {
+        flex-direction: column; /* Menú vertical en móvil */
+        gap: 10px;
+    }
+}
+
+/* =========================================
+   REPRODUCTOR DE AUDIO PERSONALIZADO (Chrome/Edge)
+========================================= */
+
+/* 1. El contenedor general del audio */
+audio {
+    width: 100%;
+    height: 45px;
+    border-radius: 30px; /* Bordes muy redondos */
+    outline: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+audio:hover {
+    transform: scale(1.02); /* Pequeño zoom al pasar el ratón */
+}
+
+/* 2. El fondo del panel (La barra gris fea) */
+audio::-webkit-media-controls-panel {
+    background: linear-gradient(90deg, var(--pink), var(--purple)); /* ¡Degradado rosa/morado! */
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* 3. El botón de Play/Pause */
+/* 3. El botón de Play/Pause */
+audio::-webkit-media-controls-play-button {
+    background-color: white; /* Truco: Ponemos fondo blanco */
+    border-radius: 50%;
+    transform: scale(1.3);
+    transition: 0.3s;
+    
+    /* ¡AQUÍ ESTÁ LA MAGIA! */
+    filter: invert(100%); 
+    /* Esto hace que el fondo blanco se vea negro 
+       y el triángulo negro se vea blanco */
+}
+
+audio::-webkit-media-controls-play-button:hover {
+    background-color: #ccc; /* Al pasar el ratón (invertido se verá gris claro) */
+    cursor: pointer;
+    transform: scale(1.4); /* Un poquito más grande al pasar el ratón */
+}
+
+/* 4. Los textos de tiempo (0:00 / 3:45) */
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: white;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* 5. El botón de volumen (Altavoz) */
+audio::-webkit-media-controls-mute-button {
+    filter: invert(1); /* Truco para volverlo blanco */
+}
+
+/* 6. El menú de los 3 puntitos (opciones) */
+audio::-webkit-media-controls-overflow-button {
+    filter: invert(1); /* Truco para volverlo blanco */
+}
+
+/* ⚠️ NOTA TÉCNICA DAM:
+   Firefox y Safari ignoran estos estilos -webkit. 
+   En esos navegadores se verá el reproductor nativo del sistema.
+   Para personalizarlo al 100% en todos lados, en el futuro tendrías 
+   que ocultar el <audio> y crear botones propios con JavaScript.
+   Pero para este proyecto, ¡esto cumple de sobra! 
+*/
