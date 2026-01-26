@@ -1,0 +1,138 @@
+/* Configuración General */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a; /* Fondo oscuro tipo Monster High */
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 105, 180, 0.2) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Menú de Navegación */
+header {
+  background: rgba(255, 0, 127, 0.8); /* Rosa fuerte */
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 3px solid #bc13fe; /* Morado Monster High */
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00ffff; /* Toque neón */
+  text-shadow: 0 0 10px #00ffff;
+}
+
+/* Secciones */
+.hero {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 2px solid #ff69b4;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+h1 {
+  font-size: 3rem;
+  color: #ff69b4;
+  text-shadow: 2px 2px #000;
+}
+
+/* Galería */
+.grid-fotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.foto-placeholder {
+  height: 250px;
+  background: #222;
+  border: 2px dashed #bc13fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+
+.foto-placeholder:hover {
+  transform: scale(1.05) rotate(2deg);
+  border-color: #ff69b4;
+}
+
+/* Animación de Corazones */
+.heart {
+  position: fixed;
+  font-size: 25px;
+  animation: float 6s infinite ease-in;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Posiciones aleatorias para los corazones */
+.heart:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+.heart:nth-child(2) {
+  left: 30%;
+  animation-delay: 2s;
+}
+.heart:nth-child(3) {
+  left: 70%;
+  animation-delay: 4s;
+}
+.heart:nth-child(4) {
+  left: 90%;
+  animation-delay: 1s;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+  background: #000;
+}
