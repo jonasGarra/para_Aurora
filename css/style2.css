@@ -521,10 +521,177 @@ audio::-webkit-media-controls-overflow-button {
     filter: invert(1); /* Truco para volverlo blanco */
 }
 
-/* ⚠️ NOTA TÉCNICA DAM:
-   Firefox y Safari ignoran estos estilos -webkit. 
-   En esos navegadores se verá el reproductor nativo del sistema.
-   Para personalizarlo al 100% en todos lados, en el futuro tendrías 
-   que ocultar el <audio> y crear botones propios con JavaScript.
-   Pero para este proyecto, ¡esto cumple de sobra! 
-*/
+/* =========================================
+   ANIMACIÓN FINAL: ECLIPSE ROMÁNTICO
+========================================= */
+
+.cosmos-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    margin: 0 auto;
+    overflow: hidden; /* Importante para que no salga barra de scroll */
+}
+
+/* --- EL SOL (TÚ) --- */
+.sun-css {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado fijo */
+    
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    
+    /* Color: Un degradado cálido y brillante */
+    background: radial-gradient(circle, #ffd700 30%, #ff4500 90%);
+    
+    /* Sombra: Un resplandor fuerte */
+    box-shadow: 0 0 60px #ffd700, 0 0 100px #ff2d55; /* Toque rojo pasión */
+    
+    z-index: 1; /* Detrás */
+    animation: sunLatido 4s infinite ease-in-out;
+}
+
+@keyframes sunLatido {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+/* --- LA LUNA (ELLA) --- */
+.moon-css {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* No ponemos transform aquí, lo controla la animación */
+    
+    width: 148px; /* Casi del mismo tamaño que el sol para taparlo bien */
+    height: 148px;
+    border-radius: 50%;
+    
+    /* TRUCO VISUAL:
+       El fondo es del color del cielo (oscuro) para "tapar" al sol.
+       Le ponemos una sombra interior para dar volumen. */
+    background-color: #1a1a1a; 
+    box-shadow: inset -10px -10px 20px rgba(255,255,255,0.1);
+    
+    z-index: 2; /* Delante */
+    
+    /* Animación: Dura 12 segundos, es lineal y se repite siempre */
+    animation: viajeLuna 12s linear infinite;
+}
+
+/* LA RUTA DE LA LUNA */
+@keyframes viajeLuna {
+    0% {
+        /* Empieza fuera a la IZQUIERDA */
+        transform: translate(-400px, -50%);
+    }
+    40% {
+        /* Llega al centro (ECLIPSE) y empieza a tapar */
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 0 transparent; /* Sin brillo aún */
+    }
+    45% {
+        /* SE QUEDA EN EL CENTRO UN POCO (Corona Solar) */
+        transform: translate(-50%, -50%);
+        /* Aquí hacemos que brille el borde porque tapa el sol */
+        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8); 
+    }
+    55% {
+        /* Sigue en el centro (fin de la pausa) */
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        /* Termina fuera a la DERECHA */
+        transform: translate(400px, -50%);
+        box-shadow: 0 0 0 transparent;
+    }
+}
+
+/* =========================================
+   ESTILOS DEL CONTADOR DE TIEMPO
+========================================= */
+
+.timer-wrapper {
+    margin-top: 50px; /* Separación del eclipse */
+    background: rgba(255, 255, 255, 0.03); /* Fondo cristal muy sutil */
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--border-soft);
+    display: inline-block; /* Para que se ajuste al contenido */
+    backdrop-filter: blur(10px); /* Efecto borroso detrás */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    max-width: 90%;
+}
+
+.timer-wrapper h3 {
+    color: var(--pink); /* Título en rosa */
+    margin-bottom: 25px;
+    font-weight: normal;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1px;
+}
+
+#contador {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Para que baje de línea en móviles */
+}
+
+.time-box {
+    background: linear-gradient(145deg, rgba(20, 20, 20, 0.8), rgba(40, 40, 40, 0.8));
+    border: 2px solid var(--purple); /* Borde morado neón */
+    border-radius: 15px;
+    width: 85px;
+    height: 95px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.15); /* Sombra morada suave */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efecto al pasar el ratón por encima de los números */
+.time-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--yellow); /* Cambia a amarillo mostaza */
+    box-shadow: 0 0 20px var(--yellow);
+}
+
+.time-box span {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: white;
+    /* Fuente monoespaciada tipo "Hacker/Programador" */
+    font-family: 'Courier New', Courier, monospace; 
+    text-shadow: 0 0 10px var(--pink); /* Brillo rosa en los números */
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.time-box .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--yellow); /* Texto de "Días/Horas" en amarillo */
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Ajuste para móviles (para que no se vean gigantes) */
+@media (max-width: 500px) {
+    .time-box {
+        width: 70px;
+        height: 80px;
+    }
+    .time-box span {
+        font-size: 1.5rem;
+    }
+    .time-box .label {
+        font-size: 0.6rem;
+    }
+}
