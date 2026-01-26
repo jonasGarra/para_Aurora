@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mensajeTexto = textarea.value;
 
     // ⚠️ IMPORTANTE: ¡Cambia esto por tu URL real de Discord!
-    const webhookURL = "TU_URL_DE_WEBHOOK_AQUÍ";
+    const webhookURL = "https://discordapp.com/api/guilds/1465385579440115885/widget.json";
 
     if (!mensajeTexto.trim()) {
       alert("¡No puedes enviar un mensaje vacío! 🤨");
