@@ -343,7 +343,7 @@ h1 {
 
 .widget-icon {
     width: 40px;
-    height: 100px;
+    height: 230px;
     background: var(--monster-purple);
     display: flex;
     align-items: center;
