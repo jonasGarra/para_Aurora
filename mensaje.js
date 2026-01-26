@@ -3,6 +3,8 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
 
   const mensajeTexto = this.querySelector("textarea").value;
   const webhookURL = "TU_URL_DE_WEBHOOK_AQUÍ"; // Pega aquí la URL de Discord
+  const widget = document.getElementById("secretWidget");
+  const btnToggle = document.getElementById("widgetToggle");
 
   const data = {
     username: "Web de Aurora 🎀",
@@ -23,4 +25,26 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
       console.error("Error al enviar:", err);
       alert("Algo falló, pero te sigo queriendo.");
     });
+});
+
+// Función para abrir/cerrar
+btnToggle.addEventListener("click", () => {
+  widget.classList.toggle("active");
+});
+
+// Opcional: Cerrar si hace clic fuera del widget
+document.addEventListener("click", (event) => {
+  const isClickInside = widget.contains(event.target);
+  if (!isClickInside && widget.classList.contains("active")) {
+    widget.classList.remove("active");
+  }
+});
+
+// Tu lógica de envío de Discord que ya tenemos...
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  // ... (aquí el código de Fetch a Discord que te pasé antes)
+
+  // Al terminar de enviar, cerramos el widget
+  widget.classList.remove("active");
 });
