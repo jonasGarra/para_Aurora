@@ -1,274 +1,232 @@
 /* =========================================
-   1. VARIABLES GLOBALES (PALETA DE COLORES)
-   ========================================= */
+   1. VARIABLES (PALETA REFINADA)
+========================================= */
 :root {
-    --kitty-pink: #ff69b4;       /* Rosa Hello Kitty */
-    --monster-purple: #bc13fe;   /* Morado Monster High */
-    --monster-black: #1a1a1a;    /* Negro Fondo */
-    --neon-blue: #00ffff;        /* Azul Neón */
-    --love-red: #ff2d55;         /* NUEVO: Rojo Pasión */
-    --mustard-yellow: #ffdb58;   /* NUEVO: Amarillo Mostaza */
+    --pink: #ff6fae;
+    --purple: #a855f7;
+    --red: #ff375f;
+    --yellow: #ffd166;
+    --bg-dark: #0f0f14;
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --border-soft: rgba(255, 255, 255, 0.15);
+    --text-soft: #f5f5f5;
 }
 
 /* =========================================
-   2. CONFIGURACIÓN GENERAL (BASE)
-   ========================================= */
+   2. BASE GENERAL
+========================================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--monster-black);
-    /* Fondo unificado para TODAS las páginas */
-    background-image: radial-gradient(
-        circle,
-        rgba(255, 105, 180, 0.2) 1px,
-        transparent 1px
-    );
-    background-size: 30px 30px;
-    color: white;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #1b1b2f, var(--bg-dark));
+    color: var(--text-soft);
     overflow-x: hidden;
 }
 
-/* Scrollbar personalizada (Toque PRO) */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: var(--monster-black);
-}
-::-webkit-scrollbar-thumb {
-    background: var(--monster-purple);
-    border-radius: 5px;
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
 }
 
 /* =========================================
-   3. COMPONENTES GLOBALES (Botones, Nav)
-   ========================================= */
-
-/* Botón "Volver al Inicio" (Estilo Rojo y Mostaza) */
+   3. BOTÓN VOLVER (MÁS FINO)
+========================================= */
 .btn-volver {
     position: fixed;
     top: 20px;
     left: 20px;
-    background-color: var(--love-red);
-    color: var(--mustard-yellow);
-    padding: 10px 25px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, var(--red), var(--pink));
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
     text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(255, 55, 95, 0.4);
     z-index: 1000;
-    border: 2px solid var(--mustard-yellow);
-    box-shadow: 0 0 10px rgba(255, 45, 85, 0.6);
-    text-transform: uppercase;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-volver:hover {
-    transform: scale(1.1);
-    background-color: var(--mustard-yellow);
-    color: var(--love-red);
-    border-color: var(--love-red);
-    box-shadow: 0 0 20px var(--mustard-yellow);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 55, 95, 0.6);
 }
 
-/* Menú de Navegación (Solo index) */
+/* =========================================
+   4. HEADER / NAV
+========================================= */
 header {
-    background: rgba(255, 0, 127, 0.8);
-    padding: 1rem;
     position: sticky;
     top: 0;
+    backdrop-filter: blur(12px);
+    background: rgba(15, 15, 20, 0.85);
+    border-bottom: 1px solid var(--border-soft);
     z-index: 100;
-    border-bottom: 3px solid var(--monster-purple);
 }
 
 nav ul {
     display: flex;
     justify-content: center;
+    gap: 30px;
     list-style: none;
-    gap: 25px;
-    padding: 0;
+    padding: 15px;
     margin: 0;
 }
 
 nav a {
+    color: var(--text-soft);
     text-decoration: none;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: 0.3s;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
 }
 
-nav a:hover {
-    color: var(--mustard-yellow); /* Cambio a mostaza al pasar ratón */
-    text-shadow: 0 0 10px var(--love-red);
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 50%;
+    background: var(--pink);
+    transition: 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 /* =========================================
-   4. SECCIÓN: INICIO (HERO)
-   ========================================= */
+   5. HERO
+========================================= */
 .hero {
-    height: 80vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    padding: 40px 20px;
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 3rem;
-    border-radius: 20px;
-    border: 2px solid var(--kitty-pink);
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-    max-width: 90%;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-soft);
+    border-radius: 25px;
+    padding: 50px 40px;
+    max-width: 700px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-.kitty-img {
-    width: 200px; /* Controlamos el tamaño aquí, no globalmente */
-    height: auto;
-    margin-top: 20px;
-    filter: drop-shadow(0 0 10px var(--monster-purple));
+.big-heart-beat {
+    font-size: 5rem;
+    animation: pulse 1.4s infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.25); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.15); }
+    100% { transform: scale(1); }
 }
 
 h1 {
     font-size: 3rem;
-    color: var(--kitty-pink);
-    text-shadow: 2px 2px #000;
-    margin: 0;
+    color: var(--pink);
+    margin-bottom: 20px;
 }
 
 /* =========================================
-   EXTRA: CORAZÓN GIGANTE LATIENDO (INICIO)
-   ========================================= */
-.big-heart-beat {
-    font-size: 6rem; /* Tamaño gigante */
-    color: white;    /* Color blanco */
-    display: inline-block; /* Necesario para que la transformación funcione bien */
-    margin-bottom: 10px; /* Un poco de espacio antes del título */
-    /* Sombra para que resplandezca */
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.9), 0 0 10px var(--kitty-pink);
-    /* Aplicamos la animación */
-    animation: heartThump 1.2s infinite ease-in-out;
-}
-
-/* Animación de "doble latido" (Pum-pum... pum-pum...) */
-@keyframes heartThump {
-    0% { transform: scale(1); }
-    14% { transform: scale(1.3); } /* Primer latido fuerte */
-    28% { transform: scale(1); }   /* Se contrae */
-    42% { transform: scale(1.15); } /* Segundo latido más suave */
-    70% { transform: scale(1); }   /* Pausa */
-    100% { transform: scale(1); }
-}
-
-/* =========================================
-   5. SECCIÓN: GALERÍA
-   ========================================= */
+   6. GALERÍA (MÁS LIMPIA)
+========================================= */
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 40px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 60px 30px;
 }
 
 .card {
-    position: relative;
+    border-radius: 20px;
     overflow: hidden;
-    border: 3px solid var(--monster-purple);
-    border-radius: 15px;
-    height: 300px; /* Altura fija para uniformidad */
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card:hover {
-    transform: scale(1.05) rotate(-2deg);
-    border-color: var(--mustard-yellow); /* Borde mostaza al hacer hover */
-    box-shadow: 0 0 20px var(--love-red);
+    position: relative;
+    transform: translateY(0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(168, 85, 247, 0.4);
 }
 
 .overlay {
     position: absolute;
-    bottom: 0;
-    background: rgba(188, 19, 254, 0.8);
-    color: var(--mustard-yellow);
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    transform: translateY(100%);
-    transition: 0.3s;
-    font-weight: bold;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: 0.3s ease;
+    font-weight: 600;
+    color: var(--yellow);
 }
 
 .card:hover .overlay {
-    transform: translateY(0);
+    opacity: 1;
 }
 
 /* =========================================
-   6. SECCIÓN: PLAYLIST
-   ========================================= */
+   7. PLAYLIST
+========================================= */
 .playlist-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 80px; /* Espacio para el botón de volver */
-    width: 100%;
+    padding: 80px 20px;
 }
 
 .neon-title {
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 0 0 10px var(--kitty-pink), 0 0 20px var(--love-red);
-    margin-bottom: 40px;
     text-align: center;
+    font-size: 3rem;
+    margin-bottom: 60px;
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .music-card {
-    background: rgba(20, 20, 20, 0.8);
-    border: 2px solid var(--kitty-pink);
-    border-radius: 20px;
-    width: 90%;
-    max-width: 700px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-soft);
+    border-radius: 25px;
+    padding: 25px;
     display: flex;
     align-items: center;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
-    backdrop-filter: blur(5px);
-    transition: transform 0.3s ease;
-}
-
-.music-card:hover {
-    transform: scale(1.02);
-    border-color: var(--mustard-yellow); /* Mostaza al hover */
-}
-
-.music-card.reverse {
-    flex-direction: row-reverse;
-    border-color: var(--monster-purple);
+    gap: 25px;
+    backdrop-filter: blur(10px);
 }
 
 .disk-wrapper {
-    flex-shrink: 0;
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid #fff;
-    box-shadow: 0 0 15px rgba(0,0,0,0.8);
-    animation: spin 10s linear infinite;
-    animation-play-state: paused;
+    animation: spin 12s linear infinite;
 }
 
-.music-card:hover .disk-wrapper {
-    animation-play-state: running;
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 .disk-img {
@@ -277,173 +235,40 @@ h1 {
     object-fit: cover;
 }
 
-@keyframes spin {
-    100% { transform: rotate(360deg); }
-}
-
 .song-details {
-    flex-grow: 1;
-    padding: 0 20px;
-    text-align: left;
-}
-
-.music-card.reverse .song-details {
-    text-align: right;
+    flex: 1;
 }
 
 .custom-msg {
-    color: var(--kitty-pink);
     font-style: italic;
-    font-size: 1.1rem;
+    color: var(--pink);
     margin-bottom: 15px;
-    border-left: 3px solid var(--love-red); /* Detalle rojo */
-    padding-left: 10px;
-}
-
-.music-card.reverse .custom-msg {
-    border-left: none;
-    border-right: 3px solid var(--love-red);
-    padding-right: 10px;
-}
-
-/* Reproductor de Audio */
-.custom-audio {
-    width: 100%;
-    height: 40px;
-    border-radius: 20px;
-    outline: none;
-}
-.custom-audio::-webkit-media-controls-panel {
-    background-color: #e0e0e0;
-}
-.custom-audio::-webkit-media-controls-play-button {
-    background-color: var(--love-red); /* Botón play rojo */
-    border-radius: 50%;
 }
 
 /* =========================================
-   7. ANIMACIÓN CORAZONES (FONDO)
-   ========================================= */
-.heart {
-    position: fixed;
-    font-size: 25px;
-    animation: float 6s infinite ease-in;
-    opacity: 0.6;
-    z-index: -1;
-}
-
-/* Colores alternos para los corazones */
-.heart:nth-child(1) { left: 10%; color: var(--love-red); animation-delay: 0s; }
-.heart:nth-child(2) { left: 30%; color: var(--mustard-yellow); animation-delay: 2s; }
-.heart:nth-child(3) { left: 70%; color: var(--monster-purple); animation-delay: 4s; }
-.heart:nth-child(4) { left: 90%; color: var(--kitty-pink); animation-delay: 1s; }
-.heart:nth-child(5) { left: 50%; color: white; animation-delay: 3s; }
-
-@keyframes float {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-}
-
-/* =========================================
-   8. WIDGET MENSAJES (OCULTO)
-   ========================================= */
-.secret-widget {
-    position: fixed;
-    right: -260px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 300px;
-    background: rgba(26, 26, 26, 0.95);
-    border: 2px solid var(--monster-purple);
-    border-radius: 20px 0 0 20px;
-    transition: all 0.5s ease;
-    z-index: 1000;
-    display: flex;
-}
-
-.secret-widget.active {
-    right: 0 !important;
-}
-
-.widget-icon {
-    width: 40px;
-    height: 230px;
-    background: var(--monster-purple);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 20px 0 0 20px;
-    animation: heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-.widget-content {
-    padding: 20px;
-    width: 100%;
-    color: white;
-}
-
-.widget-content textarea {
-    width: 100%;
-    background: #000;
-    color: var(--kitty-pink);
-    border: 1px solid var(--kitty-pink);
-    border-radius: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-}
-
-.widget-content button {
-    background: var(--love-red);
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* =========================================
-   9. FOOTER
-   ========================================= */
+   8. FOOTER
+========================================= */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     font-size: 0.8rem;
-    background: #000;
-    color: var(--mustard-yellow);
-    border-top: 1px solid var(--monster-purple);
+    opacity: 0.7;
 }
 
 /* =========================================
-   10. RESPONSIVE (MÓVIL)
-   ========================================= */
-@media (max-width: 600px) {
-    .music-card, .music-card.reverse {
+   9. RESPONSIVE
+========================================= */
+@media (max-width: 700px) {
+    .music-card {
         flex-direction: column;
         text-align: center;
     }
-    .music-card.reverse .song-details {
-        text-align: center;
-    }
-    .disk-wrapper {
-        margin-bottom: 20px;
-        width: 120px;
-        height: 120px;
-    }
-    .custom-msg {
-        border: none !important;
-        padding: 0;
-    }
+
     h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .big-heart-beat {
+        font-size: 4rem;
     }
 }

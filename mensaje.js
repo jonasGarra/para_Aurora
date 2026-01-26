@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const data = {
       username: "Web de Aurora 🎀",
-      avatar_url: "https://api.iconify.design/logos:hello-kitty.svg",
       content: `**¡Aurora te ha enviado un mensaje!** 💀💖\n> ${mensajeTexto}`,
     };
 
