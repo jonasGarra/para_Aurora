@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Porque eres la mas bella",
     "Porque me aguantas jejeje",
     "Porque contigo es diferente",
-    "Pprque te quiero muchisimo",
+    "Porque te quiero muchisimo",
     "Porque contigo el tiempo corre rapido",
     "Porque eres tu",
     "Eres mi todo",
