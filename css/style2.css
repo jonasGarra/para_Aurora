@@ -850,3 +850,100 @@ audio::-webkit-media-controls-overflow-button {
 .btn-magic:active {
   transform: scale(0.95);
 }
+
+/* --- PÁGINA CUPONES --- */
+.cupones-body {
+  background-color: var(--bg-dark);
+  padding: 50px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-cupones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.cupon {
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  border: 4px dashed var(--pink); /* Efecto borde recortable */
+  border-radius: 15px;
+  padding: 5px; /* Espacio para el borde */
+  cursor: pointer;
+  transition: transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cupon:hover {
+  transform: rotate(-2deg) scale(1.03);
+  box-shadow: 0 0 20px var(--pink);
+}
+
+.cupon-inner {
+  background: var(--bg-dark);
+  padding: 20px;
+  border-radius: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cupon h3 {
+  color: var(--mustard-yellow);
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.cupon p {
+  color: #ccc;
+}
+
+.estado {
+  margin-top: 15px;
+  background: var(--purple);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* --- ESTADO CANJEADO (GRIS) --- */
+.cupon.canjeado {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  cursor: not-allowed;
+  border-color: #555;
+  pointer-events: none; /* Ya no se puede clicar */
+}
+
+.cupon.canjeado .estado {
+  background: #333;
+  content: "CANJEADO"; /* Esto solo funciona en CSS si cambiamos el texto en JS */
+}
+
+/* Marca de agua de "USADO" */
+.cupon.canjeado::after {
+  content: "CANJEADO";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 3rem;
+  color: red;
+  font-weight: bold;
+  border: 5px solid red;
+  padding: 10px;
+  opacity: 0.8;
+}
