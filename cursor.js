@@ -33,7 +33,7 @@ document.addEventListener("touchstart", (e) => {
 
 function crearParticula(x, y) {
   const corazon = document.createElement("div");
-  corazon.innerHTML = ["💖", "✨", "🤍"]; // O usa un array ["💖", "✨", "🎀"]
+  corazon.innerHTML = "🤍"; // O usa un array ["💖", "✨", "🎀"]
   corazon.className = "touch-heart";
 
   // Posicionamos donde tocó el dedo
