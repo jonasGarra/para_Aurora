@@ -8,7 +8,7 @@ document.addEventListener("mousemove", function (e) {
   particle.style.top = e.pageY + "px";
 
   // 3. Añadir emojis aleatorios
-  const emojis = ["✨", "💖", "🎀", "🤍", "🌙", "🖤"];
+  const emojis = ["✨", "💖", "🎀", "🤍", "🌙", "🖤", "🦇"];
   particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
 
   // 4. Añadirlo al cuerpo
