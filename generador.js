@@ -10,6 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
     "Porque eres tu",
     "Eres mi todo",
     "¿Porque no? si eres perfecta",
+    "Por tus eruptos de zombie del minecraft",
+    "Porque eres mi princesa",
+    "Porque el destino lo queria así",
+    "Porque todavia me pongo nervioso al mirarte a los ojos",
+    "Porque estas loquilla",
+    "Porque el sol necesita a la luna para el eclipse",
   ];
 
   const btn = document.getElementById("btn-generar");
