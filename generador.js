@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   // 1. EL ARRAY DE RAZONES (¡Rellénalo tú con cosas personales!)
   const razones = [
-    "Por cómo te brillan los ojos cuando sonríes.",
-    "Porque eres mi jugadora 1 en este juego de la vida.",
-    "Por tu risa, que es mi canción favorita.",
-    "Porque aguantas mis frikadas de programación.",
-    "Porque eres la Luna que ilumina mi noche.",
-    "Por cómo me abrazas cuando más lo necesito.",
-    "Porque contigo hasta el lunes parece viernes.",
-    "Simplemente, porque eres Aurora.",
-    "Porque haces que mi código compile a la primera (casi siempre).",
+    "Por cómo te brillan los ojos cuando sonríes",
+    "Eres mi Luna que me ilumina en las noches",
+    "Porque eres la mas bella",
+    "Porque me aguantas jejeje",
+    "Porque contigo es diferente",
+    "Pprque te quiero muchisimo",
+    "Porque contigo el tiempo corre rapido",
+    "Porque eres tu",
+    "Eres mi todo",
   ];
 
   const btn = document.getElementById("btn-generar");
