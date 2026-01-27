@@ -19,3 +19,31 @@ document.addEventListener("mousemove", function (e) {
     particle.remove();
   }, 1000);
 });
+
+// EFECTO TÁCTIL: CORAZONES AL TOCAR LA PANTALLA
+document.addEventListener("click", (e) => {
+  crearParticula(e.clientX, e.clientY);
+});
+
+// También para pantallas táctiles específicamente
+document.addEventListener("touchstart", (e) => {
+  // e.touches[0] es el primer dedo que toca la pantalla
+  crearParticula(e.touches[0].clientX, e.touches[0].clientY);
+});
+
+function crearParticula(x, y) {
+  const corazon = document.createElement("div");
+  corazon.innerHTML = "💖"; // O usa un array ["💖", "✨", "🎀"]
+  corazon.className = "touch-heart";
+
+  // Posicionamos donde tocó el dedo
+  corazon.style.left = x + "px";
+  corazon.style.top = y + "px";
+
+  document.body.appendChild(corazon);
+
+  // Borramos después de 1 segundo
+  setTimeout(() => {
+    corazon.remove();
+  }, 1000);
+}

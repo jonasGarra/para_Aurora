@@ -966,3 +966,26 @@ audio::-webkit-media-controls-overflow-button {
     opacity: 0;
   }
 }
+
+.touch-heart {
+  position: fixed; /* Fixed para que se quede donde tocaste aunque hagas scroll */
+  font-size: 1.5rem;
+  pointer-events: none;
+  animation: floatUpFade 1s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes floatUpFade {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -100px) scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -150px) scale(0);
+    opacity: 0;
+  }
+}
