@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. EL ARRAY DE RAZONES (¡Rellénalo tú con cosas personales!)
   const razones = [
     "Por cómo te brillan los ojos cuando sonríes",
     "Eres mi Luna que me ilumina en las noches",
