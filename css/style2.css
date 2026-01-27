@@ -190,10 +190,12 @@ h1 {
   object-fit: cover;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 60px rgba(168, 85, 247, 0.4);
-  border-color: var(--pink);
+.card:hover,
+.card.active {
+  transform: scale(1.05) rotate(-2deg);
+  border-color: var(--pink); /* O el color que uses ahora */
+  box-shadow: 0 0 20px var(--red);
+  z-index: 10; /* Para que se ponga encima de las otras al hacer zoom */
 }
 
 .overlay {
@@ -209,7 +211,9 @@ h1 {
   color: var(--yellow);
 }
 
-.card:hover .overlay {
+.card:hover .overlay,
+.card.active .overlay {
+  transform: translateY(0); /* Sube hacia arriba */
   opacity: 1;
 }
 
