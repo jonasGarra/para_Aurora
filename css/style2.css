@@ -947,3 +947,22 @@ audio::-webkit-media-controls-overflow-button {
   padding: 10px;
   opacity: 0.8;
 }
+
+.mouse-particle {
+  position: absolute;
+  font-size: 1.2rem;
+  pointer-events: none; /* Para que no interfiera con los clics */
+  animation: fadeOutUp 1s forwards;
+  z-index: 9999;
+}
+
+@keyframes fadeOutUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) scale(0);
+    opacity: 0;
+  }
+}
