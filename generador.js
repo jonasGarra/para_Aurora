@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Porque contigo el tiempo corre rapido",
     "Porque eres tu",
     "Eres mi todo",
+    "¿Porque no? si eres perfecta",
   ];
 
   const btn = document.getElementById("btn-generar");
