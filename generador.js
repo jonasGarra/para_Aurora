@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "El diablo también necesita una reina",
     "Siempre te echo de menos",
     "Porque me has hecho un amarre 😝",
+    "Me encanta tu olor",
   ];
 
   const btn = document.getElementById("btn-generar");
