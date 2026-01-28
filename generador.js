@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "Porque todavia me pongo nervioso al mirarte a los ojos",
     "Porque estas loquilla",
     "Porque el sol necesita a la luna para el eclipse",
+    "Te necesito a mi lado",
+    "El diablo tambien necesita una reina",
+    "Siempre te echo de menos",
+    "Porque me has hecho un amarre 😝",
   ];
 
   const btn = document.getElementById("btn-generar");
