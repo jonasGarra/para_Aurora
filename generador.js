@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "Siempre te echo de menos",
     "Porque me has hecho un amarre 😝",
     "Me encanta tu olor",
+    "Me encanta tu pelo",
+    "Cosinas postres muy ricos",
+    "Porque en el brillo de tus ojos veo las estrellas",
+    "Sota te ama",
   ];
 
   const btn = document.getElementById("btn-generar");
