@@ -1016,6 +1016,8 @@ audio::-webkit-media-controls-overflow-button {
   perspective: 1000px;
   cursor: pointer;
   margin-top: 50px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 /* El sobre en sí */
@@ -1026,6 +1028,10 @@ audio::-webkit-media-controls-overflow-button {
   background-color: #a80000; /* Color rojo pasión para el sobre */
   margin: 0 auto;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+  /* ARREGLO IPHONE: Evita parpadeos */
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 /* --- CAPAS DEL SOBRE (Z-INDEX ES CLAVE) --- */
@@ -1049,7 +1055,7 @@ audio::-webkit-media-controls-overflow-button {
   width: 270px;
   height: 180px;
   background-color: #f4e7d4;
-  z-index: 2;
+  z-index: 50;
   overflow: hidden;
 
   /* Baja inmediatamente (delay 0s) */
@@ -1093,11 +1099,14 @@ audio::-webkit-media-controls-overflow-button {
   left: 0;
   width: 0;
   height: 0;
-  z-index: 3;
+  z-index: 60;
   /* Truco CSS para hacer triángulos con bordes */
   border-left: 150px solid transparent;
   border-right: 150px solid transparent;
   border-bottom: 140px solid #c21515; /* Triángulo rojo frontal */
+
+  /* ARREGLO IPHONE: Para que no desaparezca */
+  pointer-events: none; /* Para poder clicar el papel si sobresale */
 }
 
 /* Capa 4: La solapa superior (la que se mueve) */
@@ -1108,7 +1117,7 @@ audio::-webkit-media-controls-overflow-button {
   left: 0;
   width: 0;
   height: 0;
-  z-index: 4;
+  z-index: 100;
   border-left: 150px solid transparent;
   border-right: 150px solid transparent;
   border-top: 100px solid #a80000; /* Color base rojo */
@@ -1119,6 +1128,9 @@ audio::-webkit-media-controls-overflow-button {
     transform 0.6s ease-in-out 0.4s,
     z-index 0s linear 0.4s;
   transform: rotateX(0deg);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Corrección para el sobre ROSA (Solapa) */
@@ -1141,13 +1153,14 @@ audio::-webkit-media-controls-overflow-button {
   height: auto;
   min-height: 400px; /* Altura para que quepa el texto */
   transform: translateY(-200px); /* Sube hacia arriba */
-  z-index: 5; /* Se pone delante de todo */
+  z-index: 200; /* Se pone delante de todo */
 
   /* Espera 0.4s a que la solapa termine de subir */
   transition:
     transform 0.5s ease-in-out 0.4s,
     height 0.5s ease-in-out 0.4s,
     z-index 0s linear 0.4s;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
 }
 
 /* El Texto: Aparece al final */
@@ -1181,23 +1194,37 @@ audio::-webkit-media-controls-overflow-button {
    BUZÓN DOBLE (JONAS & AURORA)
 ========================================= */
 .buzon-section {
+  /* IMPORTANTE: Para que el z-index funcione bien dentro */
+  position: relative;
+  z-index: 1;
   padding: 60px 20px;
   background: radial-gradient(circle at center, #1a0505 0%, #000 100%);
   text-align: center;
+  /* Evitamos que el scroll horizontal aparezca en móvil */
+  overflow-x: hidden;
 }
 
 /* Contenedor flexible para poner los sobres lado a lado */
 .sobres-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alineados arriba */
-  gap: 50px; /* Espacio entre los dos sobres */
-  flex-wrap: wrap; /* Para que en móvil baje uno debajo del otro */
+  align-items: flex-start;
+  gap: 30px; /* Reducimos un poco el hueco */
+  flex-wrap: wrap;
   margin-top: 40px;
+  /* ARREGLO 3D: Necesario para iPhone */
+  perspective: 1000px;
 }
 
 .carta-wrapper {
-  margin-bottom: 100px; /* Espacio extra abajo para cuando se abra la carta */
+  position: relative;
+  margin-bottom: 120px; /* Espacio para que la carta salga sin chocar abajo */
+  z-index: 10; /* Z-index base */
+  transition: z-index 0s linear 0.4s; /* Truco para cambiar el z-index */
+}
+
+.carta-wrapper:has(.open) {
+  z-index: 9999; /* ¡ENCIMA DE TODO! (Footer y el otro sobre) */
 }
 
 .remite {
