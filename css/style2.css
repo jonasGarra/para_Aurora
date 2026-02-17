@@ -993,3 +993,269 @@ audio::-webkit-media-controls-overflow-button {
     opacity: 0;
   }
 }
+
+/* =========================================
+   SECCIÓN CARTA MANUSCRITA
+========================================= */
+.carta-section {
+  padding: 60px 20px;
+  background: radial-gradient(
+    circle at center,
+    #220000 0%,
+    #0a0a0a 100%
+  ); /* Fondo rojizo oscuro romántico */
+  text-align: center;
+  min-height: 800px; /* Altura suficiente para cuando salga la carta */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenedor para centrar y dar perspectiva 3D */
+.envelope-wrapper {
+  perspective: 1000px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+/* El sobre en sí */
+.envelope {
+  position: relative;
+  width: 300px; /* Ancho del sobre */
+  height: 200px; /* Alto del sobre cerrado */
+  background-color: #a80000; /* Color rojo pasión para el sobre */
+  margin: 0 auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- CAPAS DEL SOBRE (Z-INDEX ES CLAVE) --- */
+
+/* Capa 1: Fondo interior (detrás de la carta) */
+.envelope-back {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #8a0000; /* Un poco más oscuro */
+  z-index: 1;
+}
+
+/* Capa 2: El Folio con la Carta */
+.paper {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  width: 270px;
+  height: 180px;
+  background-color: #f4e7d4;
+  z-index: 2;
+  overflow: hidden;
+
+  /* Baja inmediatamente (delay 0s) */
+  transition:
+    transform 0.4s ease-in-out,
+    height 0.4s ease-in-out;
+  transform: translateY(0);
+}
+
+/* Estilos del texto manuscrito */
+.paper-content {
+  padding: 20px;
+  font-family: "Dancing Script", cursive; /* La fuente que importamos */
+  color: #3a1f1f; /* Color tinta marrón oscuro */
+  font-size: 1.1rem;
+  line-height: 1.4;
+  text-align: left;
+  opacity: 0; /* Texto invisible al principio */
+
+  transition: opacity 0.3s;
+}
+.paper-content ul {
+  margin: 10px 20px;
+}
+.destacado {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #a80000;
+  margin: 15px 0;
+}
+.firma {
+  margin-top: 30px;
+  text-align: right;
+  font-size: 1.3rem;
+}
+
+/* Capa 3: Frente del sobre (el bolsillo triangular) */
+.envelope-front {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  /* Truco CSS para hacer triángulos con bordes */
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 140px solid #c21515; /* Triángulo rojo frontal */
+}
+
+/* Capa 4: La solapa superior (la que se mueve) */
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 4;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 100px solid #a80000; /* Color base rojo */
+  transform-origin: top;
+
+  /* Cierra en 0.6s, pero espera 0.4s antes de empezar */
+  transition:
+    transform 0.6s ease-in-out 0.4s,
+    z-index 0s linear 0.4s;
+  transform: rotateX(0deg);
+}
+
+/* Corrección para el sobre ROSA (Solapa) */
+.pink-style .envelope-flap {
+  border-top-color: var(--purple);
+}
+
+/* 2. ESTADO ABIERTO (.open) */
+
+/* La Solapa: Se abre PRIMERO e inmediatamente */
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+  /* Al abrir: delay 0s (inmediato) */
+  transition-delay: 0s;
+}
+
+/* El Papel: Sube DESPUÉS de que la solapa se abra */
+.envelope-wrapper.open .paper {
+  height: auto;
+  min-height: 400px; /* Altura para que quepa el texto */
+  transform: translateY(-200px); /* Sube hacia arriba */
+  z-index: 5; /* Se pone delante de todo */
+
+  /* Espera 0.4s a que la solapa termine de subir */
+  transition:
+    transform 0.5s ease-in-out 0.4s,
+    height 0.5s ease-in-out 0.4s,
+    z-index 0s linear 0.4s;
+}
+
+/* El Texto: Aparece al final */
+.envelope-wrapper.open .paper-content {
+  opacity: 1;
+  transition-delay: 0.8s;
+}
+
+/* Ajuste Móvil */
+@media (max-width: 600px) {
+  .envelope {
+    width: 260px;
+  }
+  .paper {
+    width: 230px;
+  }
+  .envelope-front {
+    border-left-width: 130px;
+    border-right-width: 130px;
+  }
+  .envelope-flap {
+    border-left-width: 130px;
+    border-right-width: 130px;
+  }
+  .envelope-wrapper.open .paper {
+    transform: translateY(-250px);
+  } /* Sube menos en móvil */
+}
+
+/* =========================================
+   BUZÓN DOBLE (JONAS & AURORA)
+========================================= */
+.buzon-section {
+  padding: 60px 20px;
+  background: radial-gradient(circle at center, #1a0505 0%, #000 100%);
+  text-align: center;
+}
+
+/* Contenedor flexible para poner los sobres lado a lado */
+.sobres-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alineados arriba */
+  gap: 50px; /* Espacio entre los dos sobres */
+  flex-wrap: wrap; /* Para que en móvil baje uno debajo del otro */
+  margin-top: 40px;
+}
+
+.carta-wrapper {
+  margin-bottom: 100px; /* Espacio extra abajo para cuando se abra la carta */
+}
+
+.remite {
+  color: var(--text-soft);
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* --- ESTILOS ESPECÍFICOS POR COLOR --- */
+
+/* SOBRE ROJO (ESTILO JONAS) - Ya lo tenías, lo definimos explícito */
+.envelope.red-style {
+  background-color: #a80000;
+}
+.red-style .envelope-back {
+  background-color: #8a0000;
+}
+.red-style .envelope-front {
+  border-bottom-color: #c21515;
+}
+.red-style .envelope-flap {
+  border-top-color: #a80000;
+}
+
+/* SOBRE ROSA (ESTILO AURORA/MONSTER HIGH) */
+.envelope.pink-style {
+  background-color: var(--purple);
+} /* Fondo base morado */
+.pink-style .envelope-back {
+  background-color: #4a0e4e;
+} /* Interior más oscuro */
+
+/* El triángulo frontal (bolsillo) en Rosa Intenso */
+.pink-style .envelope-front {
+  border-bottom-color: var(--pink);
+}
+
+/* La solapa que se abre en Morado */
+.pink-style .envelope-flap {
+  border-top-color: var(--purple);
+}
+
+/* Detalle extra: Sombra de neón diferente para cada uno */
+.red-style {
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+}
+.pink-style {
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+}
+
+/* RESPONSIVE MÓVIL */
+@media (max-width: 768px) {
+  .sobres-container {
+    gap: 80px; /* Más espacio vertical en móvil */
+  }
+  .carta-wrapper {
+    width: 100%; /* Que ocupen todo el ancho */
+  }
+}
